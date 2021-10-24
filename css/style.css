@@ -1,0 +1,56 @@
+/**
+ * File: style.css
+ * GUI Assignment: Creating an Interactive Dynamic Table
+ *
+ * - This assignment uses HTML, CSS, and JavaScript to create a Multiplication
+     table based off of solely user input via a form, done so completely dynamically
+ *
+ * - This file styles the existing HTML to make the form and table easy to view
+ *   and stylistcally pleasing, as well as easy to understand
+ *
+ * Jacob Leboeuf, UMass Lowell Computer Science, jacob_leboeuf@student.uml.edu,
+ * Copyright (c) 2021 by Jacob. All rights reserved. May be freely copied or
+ * excerpted for educational purposes with credit to the author.
+ * updated by JL on October 18, 2021 at 11:49 AM
+**/
+
+body {
+    text-align: center;
+    border: solid;
+    width: 80%;
+    padding-bottom: 30em;
+    margin: auto;
+    margin-top: 1%;
+}
+td {
+    border-bottom: solid;
+    border-left: solid;
+}
+table {
+    margin: auto;
+    border: solid;
+    border-collapse: collapse;
+}
+input[type=text]{
+    width: 4em;
+}
+button {
+    width: 100%;
+    font-weight: bold;
+    font-size: 100%;
+    background-color: pink;
+}
+#row {
+  color: black;
+  border-color: black;
+}
+#table td {
+  padding: 1%;
+}
+#table {
+    font-weight: bold;
+    border-top-color: black;
+    border-left-color: black;
+    color: red;
+    padding-top: 1%;
+}
