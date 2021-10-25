@@ -1,6 +1,32 @@
+/**
+ * File: hw3.js
+ * GUI Assignment: Creating an Interactive Dynamic Table
+ *
+ * - This assignment uses HTML, CSS, and JavaScript to create a Multiplication
+     table based off of solely user input via a form, done so completely dynamically
+ *
+ * - This file contains the JavaScript for the entire project, taking the
+ *   inputted values by the user to create and display a Multiplication Table
+ *   based on those values
+ *
+ * Jacob Leboeuf, UMass Lowell Computer Science, jacob_leboeuf@student.uml.edu,
+ * Copyright (c) 2021 by Jacob. All rights reserved. May be freely copied or
+ * excerpted for educational purposes with credit to the author.
+ * updated by JL on October 24, 2021 at 11:49 PM
+**/
 const inputs = document.querySelector('.inputs');
+const infotext = document.getElementById("infotext");
 const table = document.getElementById("table");
 var minCol, maxCol, minRow, maxRow;
+/**
+  * This function checks if the values inputted within the form
+  * are numbers, and converts math symbols, such as pi and e, into
+  * their respective whole number values
+  *
+  * @param {string} value - input being checked
+  *
+  * @return {int} - Whole number equivalent for table
+**/
 function checkForMathVars(value) {
     if (isNaN(value) && (value == "e" || value == "pi")) {
         value = 3;
@@ -11,37 +37,48 @@ function checkForMathVars(value) {
     }
     return value;
 }
+/**
+  * This function creates an HTML table element, fills the tabke
+  * with accurate Multiplication table values based off of the
+  * parameters given, and returns the filled HTML table element
+  *
+  * @param {int} minCol - Minimum column value
+  * @param {int} maxCol - Maximum column value
+  * @param {int} minRow - Minimum row value
+  * @param {int} maxRow - Maximum row value
+  *
+  * @return {string} - HTML equivalent of Multiplication Table
+  *                    based on parameters
+**/
 function createTable(minCol, maxCol, minRow, maxRow) {
     var values = "";
-    var x, y;
-    if (minCol > maxCol) {
-        x = -1;
-    } else {
-        x = 1;
-    }
-    if (minRow > maxRow) {
-        y = -1;
-    } else {
-         y = 1;
-    }
     values += "<center><table>";
     //values += "<th>";
-    values +="<tr><td></td><td></td>"
-    for (var a = minCol; a <= maxCol; a+=x) {
-        values +="<td id=\"row\"><center>" + a + "</center></td>";
+    values +="<tr><th id = \"space\"><center>x</center></th>"
+    for (var a = minCol; a <= maxCol; a++) {
+        values +="<th id=\"row\"><center>" + a + "</center></th>";
     }
-    values += "</tr></th>";
-    for (var i = minRow; i <= maxRow; i+=y) {
+    values += "</tr>";
+    for (var i = minRow; i <= maxRow; i++) {
         values += "<tr>";
-        values += "<th><td id=\"row\"><center>" + i + "</center></td></th>"
-        for (var j = minCol; j <= maxCol; j+=x) {
+        values += "<th id=\"row\"><center>" + i + "</center></th>"
+        for (var j = minCol; j <= maxCol; j++) {
           values += "<td><center>" + i * j + "</center></td>";
         }
         values += "</tr>";
     }
+
     values += "</table></center>";
     return values;
 }
+/**
+  * This function essentially serves as the main 'function',
+  * where upon user submission of the form it checks if the
+  * inputs are valid, and proceeds to either inform the user of
+  * where/how the inputs are invalid, or generate and display
+  * a Multiplication table based upon valid inputs.
+  *
+**/
 inputs.addEventListener('submit',(e) => {
     e.preventDefault();
     minCol = checkForMathVars(document.getElementById("minCol").value);
@@ -49,19 +86,24 @@ inputs.addEventListener('submit',(e) => {
     minRow = checkForMathVars(document.getElementById("minRow").value);
     maxRow = checkForMathVars(document.getElementById("maxRow").value);
     if (isNaN(minCol) || !minCol) {
-        table.innerHTML= "Minimum Column Value is not a number";
+        infotext.innerHTML = "<p>Minimum Column Value is not a number!</p>";
     } else if (isNaN(maxCol) || !maxCol) {
-        table.innerHTML= "Maximum Column Value is not a number";
+        infotext.innerHTML = "<p>Maximum Column Value is not a number!</p>";
     } else if (isNaN(minRow) || !minRow) {
-        table.innerHTML= "Minimum Row Value is not a number";
+        infotext.innerHTML = "<p>Minimum Row Value is not a number!</p>";
     } else if (isNaN(maxRow) || !maxRow) {
-        table.innerHTML= "Maximum Row Value is not a number";
+        infotext.innerHTML = "<p>Maximum Row Value is not a number!</p>";
+    } else if (minCol > maxCol) {
+        infotext.innerHTML = "<p>Minimum Column Value cannot be greater than the Maximum Column Value!</p>";
+    } else if (minRow > maxRow) {
+        infotext.innerHTML = "<p>Minimum Row Value cannot be greater than the Maximum Row Value!</p>";
+    } else if ((maxCol - minCol) > 200) {
+        infotext.innerHTML = "<p>Column range cannot exceed 200 between minimum and maximum values!<\p>";
+    } else if ((maxRow - minRow) > 200) {
+        infotext.innerHTML = "<p>Row range cannot exceed 200 between minimum and maximum values!<\p>";
     } else {
-        table.innerHTML = "Decimal numbers are rounded to whole numbers.";
-        table.innerHTML += "<br>";
-        table.innerHTML += "Mathematical symbols 'e' and 'pi' are rounded to 3";
-        table.innerHTML += "<br>";
-        table.innerHTML += "<br>";
-        table.innerHTML += createTable(minCol, maxCol, minRow, maxRow);
+        infotext.innerHTML = "<p>Decimal numbers are rounded to whole numbers.</p>";
+        infotext.innerHTML += "<p>Mathematical symbols 'e' and 'pi' are rounded to 3.</p>";
+        table.innerHTML = createTable(minCol, maxCol, minRow, maxRow);
     }
 });
