@@ -1,54 +1,54 @@
+
 <!DOCTYPE html>
 <!--
 File: index.html
 GUI Assignment: Creating an Interactive Dynamic Table
-
 - This assignment uses HTML, CSS, and JavaScript to create a Multiplication
-  table based off of solely user input via a form, done so completely dynamically
-
+table based off of solely user input via a form, done so completely dynamically
 - This file provides the HTML structure of the product and actively displays
-  the user form, and the proceeding table when it is correctly filled out
-
+the user form, and the proceeding table when it is correctly filled out
 Jacob Leboeuf, UMass Lowell Computer Science, jacob_leboeuf@student.uml.edu,
 Copyright (c) 2021 by Jacob. All rights reserved. May be freely copied or
 excerpted for educational purposes with credit to the author.
-updated by JL on October 18, 2021 at 11:49 AM
+updated by JL on October 24, 2021 at 11:49 PM
 -->
 <html lang="en">
-    <head>
-        <meta charset="utf-8">
-        <title>Multiplication Table</title>
-        <link rel="stylesheet" href="css/style.css">
-    </head>
-    <body>
-        <h1> Interactive Multiplication Table </h1>
-        <form class="inputs">
-            <table id="userInput">
-                <tr>
-                    <td>Minimum Column Value:</td>
-                    <td><input type="text" id="minCol"></td>
-                </tr>
-                <tr>
-                    <td>Maximum Column Value:</td>
-                    <td><input type="text" id="maxCol"></td>
-                </tr>
+ <head>
+     <meta charset="utf-8">
+     <title>Multiplication Table</title>
+     <link rel="stylesheet" href="css/style.css">
+ </head>
+ <body>
+     <h1> Interactive Multiplication Table </h1>
+     <form class="inputs">
+         <table id="userInput">
+             <tr>
+                 <td>Minimum Column Value:</td>
+                 <td><input type="text" id="minCol"></td>
+             </tr>
+             <tr>
+                 <td>Maximum Column Value:</td>
+                 <td><input type="text" id="maxCol"></td>
+             </tr>
 
-                <tr>
-                    <td>Minimum Row Value:</td>
-                    <td><input type="text" id="minRow"></td>
-                </tr>
-                <tr>
-                    <td>Maximum Row Value:</td>
-                    <td><input type="text" id="maxRow"></td>
-                </tr>
+             <tr>
+                 <td>Minimum Row Value:</td>
+                 <td><input type="text" id="minRow"></td>
+             </tr>
+             <tr>
+                 <td>Maximum Row Value:</td>
+                 <td><input type="text" id="maxRow"></td>
+             </tr>
 
-                <tr>
-                    <td id="makeTable" colspan="2"><button class="submit" type="submit">"Make Table"</button></td>
-                </tr>
-            </table>
-        </form>
-        <div id="table">
-        </div>
-        <script src="js/hw3.js"></script>
-    </body>
+             <tr>
+                 <td id="makeTable" colspan="2"><button class="submit" type="submit">"Make Table"</button></td>
+             </tr>
+         </table>
+     </form>
+     <div id="infotext">
+    </div>
+     <div id="table">
+     </div>
+     <script src="js/hw3.js"></script>
+ </body>
 </html>
