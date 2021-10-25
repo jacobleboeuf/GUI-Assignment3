@@ -33,7 +33,7 @@ function checkForMathVars(value) {
     } else if (isNaN(value) && (value == "-e" || value == "-pi")) {
         value = -3;
     } else if (!isNaN(value)) {
-        return parseInt(value);
+        return Math.round(value);
     }
     return value;
 }
@@ -85,13 +85,13 @@ inputs.addEventListener('submit',(e) => {
     maxCol = checkForMathVars(document.getElementById("maxCol").value);
     minRow = checkForMathVars(document.getElementById("minRow").value);
     maxRow = checkForMathVars(document.getElementById("maxRow").value);
-    if (isNaN(minCol) || !minCol) {
+    if (isNaN(minCol)) {
         infotext.innerHTML = "<p>Minimum Column Value is not a number!</p>";
-    } else if (isNaN(maxCol) || !maxCol) {
+    } else if (isNaN(maxCol)) {
         infotext.innerHTML = "<p>Maximum Column Value is not a number!</p>";
-    } else if (isNaN(minRow) || !minRow) {
+    } else if (isNaN(minRow)) {
         infotext.innerHTML = "<p>Minimum Row Value is not a number!</p>";
-    } else if (isNaN(maxRow) || !maxRow) {
+    } else if (isNaN(maxRow)) {
         infotext.innerHTML = "<p>Maximum Row Value is not a number!</p>";
     } else if (minCol > maxCol) {
         infotext.innerHTML = "<p>Minimum Column Value cannot be greater than the Maximum Column Value!</p>";
